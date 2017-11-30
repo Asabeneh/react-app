@@ -167,17 +167,21 @@ table th {
   padding: 8px;
 }
 
-.fa-pencil {
+.ion-edit{
   fill: #909090;
   height: 24;
   width: 24;
   display: inline-block;
   margin-right: 1.5em;
   float: left;
+font-size: 25px;
+opacity: 0.5;
 }
-.fa-trash-o {
+.ion-trash-b{
   float: left;
   cursor: pointer;
+  font-size: 25px;
+  opacity: 0.5;
 }
 a:link {
   text-decoration: inherit;

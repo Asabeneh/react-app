@@ -59,13 +59,12 @@ const Participant = createReactClass({
           <span>
             <i
               onClick={this.handleEdit}
-              className="fa fa-pencil"
-              aria-hidden="true"
+              className="icon ion-edit"
+
             />
             <i
               onClick={this.handleDelete}
-              className="fa fa-trash-o"
-              aria-hidden="true"
+              className="icon ion-trash-b"
             />
           </span>
         </td>
