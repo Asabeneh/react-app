@@ -11,7 +11,6 @@ const ParticipantsBoard = createReactClass({
       <div className="wrapper">
         <TitleBar title="Nord Software" />
         <div className="title">
-          {' '}
           <h3> List of Participants</h3>
         </div>
         <Participants />
