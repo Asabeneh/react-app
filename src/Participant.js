@@ -1,91 +1,124 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-const Participant = createReactClass ({
-  getInitialState(){
-    return{
-      editing:false
-    }
+const Participant = createReactClass({
+  getInitialState() {
+    return {
+      editing: false
+    };
   },
-  handleDelete(){
-    this.props.onDelete(this.props.index)
+  handleDelete() {
+    this.props.onDelete(this.props.index);
   },
-  handleEdit(){
-  this.props.onEdit(this.props.index);
-  this.setState({
-    editing:true
-  })
+  handleEdit() {
+    this.props.onEdit(this.props.index);
+    this.setState({
+      editing: true
+    });
   },
-  handleChange(e){
-    console.log("Saved");
+  handleChange(e) {
+    console.log('Saved');
     e.preventDefault(e);
     let name = this.refs.name.value;
     let email = this.refs.email.value;
     let phone = this.refs.phone.value;
     let saveUpdate = [];
-    if(name.length > 0 && email.length > 0 && phone.length > 0){
-      saveUpdate.push({name:name,email:email,phone:phone});
-      this.props.onSave(saveUpdate[0],this.props.index)
+    if (name.length > 0 && email.length > 0 && phone.length > 0) {
+      saveUpdate.push({ name, email, phone });
+      this.props.onSave(saveUpdate[0], this.props.index);
     }
     this.setState({
-      editing:true
-    })
+      editing: true
+    });
   },
-  handleSave(){
+  handleSave() {
     let name = this.refs.name.value;
     let email = this.refs.email.value;
     let phone = this.refs.phone.value;
     let saveUpdate = [];
-    if(name.length > 0 && email.length > 0 && phone.length > 0){
-      saveUpdate.push({name:name,email:email,phone:phone});
-      this.props.onSave(saveUpdate[0],this.props.index)
+    if (name.length > 0 && email.length > 0 && phone.length > 0) {
+      saveUpdate.push({ name, email, phone });
+      this.props.onSave(saveUpdate[0], this.props.index);
     }
     this.setState({
-      editing:false
-    })
+      editing: false
+    });
   },
-  handleCancel(){
+  handleCancel() {
     this.props.onCancel();
     this.setState({
-      editing:false
-    })
+      editing: false
+    });
   },
-  renderNormal(){
-    return(
-        <tr>
-            <td >{this.props.participant.name}</td>
-            <td>{this.props.participant.email} </td>
-            <td>{this.props.participant.phone} </td >
-            <td className = "edit-delet-buttons">
-            <span>
-              <i  onClick= {this.handleEdit} className="fa fa-pencil" aria-hidden="true"></i>
-               <i onClick= {this.handleDelete} className="fa fa-trash-o" aria-hidden="true"></i>
-               </span>
-            </td>
-            </tr>
+  renderNormal() {
+    return (
+      <tr>
+        <td>{this.props.participant.name}</td>
+        <td>{this.props.participant.email} </td>
+        <td>{this.props.participant.phone} </td>
+        <td className="edit-delet-buttons">
+          <span>
+            <i
+              onClick={this.handleEdit}
+              className="fa fa-pencil"
+              aria-hidden="true"
+            />
+            <i
+              onClick={this.handleDelete}
+              className="fa fa-trash-o"
+              aria-hidden="true"
+            />
+          </span>
+        </td>
+      </tr>
     );
   },
-  renderForm(){
-    return(
-          <tr>
-              <td><input onChange= {this.handleChange} type = "text" ref= "name" placeholder = "Full name" defaultValue = {this.props.participant.name}/></td>
-              <td><input  onChange = {this.handleChange} type = "email" ref = "email" placeholder = "E-mail address" defaultValue = {this.props.participant.email}/></td>
-              <td><input  onChange = {this.handleChange} type = "text" ref= "phone" placeholder = "Phone number" defaultValue = {this.props.participant.phone}/></td>
-              <td className = "save-cancel-buttons">
-                <div>
-                    <button onClick={this.handleCancel} className="cancel">Cancel</button>
-                    <button onClick= {this.handleSave} className="save">Save</button>
-                </div>
-              </td>
-          </tr>
-
+  renderForm() {
+    return (
+      <tr>
+        <td>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            ref="name"
+            placeholder="Full name"
+            defaultValue={this.props.participant.name}
+          />
+        </td>
+        <td>
+          <input
+            onChange={this.handleChange}
+            type="email"
+            ref="email"
+            placeholder="E-mail address"
+            defaultValue={this.props.participant.email}
+          />
+        </td>
+        <td>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            ref="phone"
+            placeholder="Phone number"
+            defaultValue={this.props.participant.phone}
+          />
+        </td>
+        <td className="save-cancel-buttons">
+          <div>
+            <button onClick={this.handleCancel} className="cancel">
+              Cancel
+            </button>
+            <button onClick={this.handleSave} className="save">
+              Save
+            </button>
+          </div>
+        </td>
+      </tr>
     );
-
   },
-  render(){
-    if(this.state.editing){
+  render() {
+    if (this.state.editing) {
       return this.renderForm();
-    }
-    else{
+    } else {
       return this.renderNormal();
     }
   }
