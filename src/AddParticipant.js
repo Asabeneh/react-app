@@ -13,7 +13,7 @@ const AddParticipant = createReactClass({
     let phone = e.target.phone.value;
     let addNewParticipant = [];
     if (name.length > 0 && email.length > 0 && phone.length > 0) {
-      addNewParticipant.push({id,name,email,phone});
+      addNewParticipant.push({ id, name, email, phone });
       e.target.name.value = '';
       e.target.email.value = '';
       e.target.phone.value = '';
@@ -24,35 +24,25 @@ const AddParticipant = createReactClass({
     return (
       <div className="add-participant">
         <form className="form" onSubmit={this.handleSubmit}>
-          <tr>
-            <td>
-              <input
-                className="form-input"
-                type="text"
-                name="name"
-                placeholder="Full name"
-              />
-            </td>
-            <td>
-              <input
-                className="form-input"
-                type="email"
-                name="email"
-                placeholder="E-mail address"
-              />
-            </td>
-            <td>
-              <input
-                className="form-input"
-                type="text"
-                name="phone"
-                placeholder="Phone number"
-              />
-            </td>
-            <td>
-              <input className="add" type="submit" value="Add New" />
-            </td>
-          </tr>
+          <input
+            className="form-input"
+            type="text"
+            name="name"
+            placeholder="Full name"
+          />
+          <input
+            className="form-input"
+            type="email"
+            name="email"
+            placeholder="E-mail address"
+          />
+          <input
+            className="form-input"
+            type="text"
+            name="phone"
+            placeholder="Phone number"
+          />
+          <input className="add" type="submit" value="Add New" />
         </form>
       </div>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createReactClass from 'create-react-class';
-import faker from 'faker';
 import TitleBar from './TitleBar';
 import Participants from './Participants';
 import './index.css';

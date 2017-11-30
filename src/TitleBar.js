@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import createReactClass from 'create-react-class';
 const TitleBar = createReactClass({
   render() {
@@ -8,6 +8,7 @@ const TitleBar = createReactClass({
           <img
             className="logo-img"
             src="https://pbs.twimg.com/profile_images/836511614698409984/Wg1lncjD.jpg"
+            alt = "Nord software logo"
           />
           <span className="logo-title">{this.props.title}</span>
         </div>

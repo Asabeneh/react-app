@@ -27,7 +27,6 @@ const Participants = createReactClass({
     });
   },
   removeParticipant(i) {
-    console.log('Removing comment:' + i);
     var arr = this.state.participants;
     arr.splice(i, 1);
     this.setState({
@@ -35,7 +34,7 @@ const Participants = createReactClass({
     });
   },
   updateParticipant(newText, i) {
-    console.log('Updating comment:');
+    console.log('Updating participant:');
     var arr = this.state.participants;
     arr[i] = newText;
     this.setState({
@@ -71,10 +70,6 @@ const Participants = createReactClass({
     }
   },
   eachParticipants(participant, i) {
-    let name = participant.name;
-    let email = participant.email;
-    let phone = participant.phone;
-    console.log(name, email, phone);
     return (
       <Participant
         key={i}
@@ -101,7 +96,6 @@ const Participants = createReactClass({
             <tr>
               <th onClick={this.sortTableByName} className="participant_info">
                 <a href="#">
-                  {' '}
                   Name <i className="fa fa-arrow-down" aria-hidden="true" />
                 </a>
               </th>
