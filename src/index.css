@@ -7,12 +7,13 @@ body {
   background: #f1f1f1;
   width: 912px;
   padding-bottom: 100px;
-  border: ;
+
 }
 .title-bar {
   width: 912px;
   height: 96px;
   background: #adb5bd;
+
 }
 .title {
   font-size: 16px;
@@ -22,6 +23,7 @@ body {
   margin-bottom: 32px;
   color: #959595;
   font-weight: bold;
+
 }
 div.logo {
   position: relative;
@@ -34,11 +36,13 @@ div.logo {
   color: white;
   font-size: 24px;
   font-weight: 500;
+
 }
 .logo-img {
   vertical-align: middle;
-  width: 10%;
+  width: 8%;
   margin-right: 10px;
+
 }
 
 .participant {
@@ -50,6 +54,7 @@ div.logo {
   display: flex;
   justify-content: space-between;
   height: 72px;
+
 }
 .add-participant {
   background: #ffffff;
@@ -58,9 +63,11 @@ div.logo {
   padding: 1.3rem;
   margin-left: 32px;
   margin-right: 32px;
+
 }
 form tr {
   vertical-align: middle;
+
 }
 .partipant-table {
   background: #ffffff;
@@ -73,22 +80,19 @@ form tr {
   border-collapse: collapse;
   border: none;
   table-layout: inherit;
+
 }
 .partipant-table td {
   border: none;
   margin: 5px;
   border-bottom: 0.1em solid rgba(153, 153, 153, 0.15);
   outline: none;
-}
 
-.form {
-  display: inline;
-  margin-top: 30px;
 }
 input {
   position: relative;
   height: 40px;
-  width: 200px;
+  width: 180px;
   border: 1px solid #e8e8e8;
   vertical-align: middle;
   margin-top: 16px;
@@ -98,14 +102,18 @@ input {
   text-align: left;
   color: #757575;
   font-size: 14px;
+
 }
 .add {
-  background: #0077ff;
+  /* background: #0077ff; */
+  background: #f1f1f1;
   height: 40px;
-  color: #ffffff;
   border: 1px solid #e8e8e8;
-  width: 80px;
+  width: 120px;
   text-align: center;
+  vertical-align: middle;
+  float: right;
+
 }
 table thead tr th {
   background: #ffffff;
@@ -127,53 +135,47 @@ table td {
   line-height: 24px;
   font-weight: 400;
   height: 72px;
-  /*border-bottom: thin solid;
-  outline: thin solid;*/
 }
-table tr {
-  margin-left: 24px;
-}
-
-.edit-delet-buttons {
+button{
+  background: #0077ff;
+  height: 40px;
+  color: #ffffff;
+  border: 1px solid #e8e8e8;
   width: 80px;
+  text-align: center;
+  margin: 2px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 500;
+
 }
-.edit-delet-buttons div {
-  margin: auto;
-  width: 118px;
-}
-.save-cancel-buttons {
-  /*width:100px;*/
+.buttons div {
+  display: flex;
+  justify-content:space-between;
 }
 .save {
   background: #0077ff;
   color: #ffffff;
   border: 1px solid #e8e8e8;
-  font-size: 12px;
-  font-weight: 400;
-  width: 30x;
+
 }
 .cancel {
   background: #f1f1f1;
   border: 1px solid #e8e8e8;
   color: #0077ff;
-  font-size: 9px;
-  font-weight: 400;
-  margin-right: 0.5em;
-  width: 30px;
 }
 table td,
 table th {
   border-bottom: none;
   padding: 8px;
 }
-
 .ion-edit{
-  fill: #909090;
-  height: 24;
-  width: 24;
-  display: inline-block;
-  margin-right: 1.5em;
-  float: left;
+fill: #909090;
+height: 24;
+width: 24;
+display: inline-block;
+margin-right: 1.5em;
+float: left;
 font-size: 25px;
 opacity: 0.5;
 }
@@ -184,7 +186,7 @@ opacity: 0.5;
   opacity: 0.5;
 }
 a:link {
-  text-decoration: inherit;
+  text-decoration: none;
   color: inherit;
   cursor: auto;
 }
@@ -192,4 +194,29 @@ a:visited {
   text-decoration: inherit;
   color: inherit;
   cursor: auto;
+}
+tr input{
+  width:90%;
+}
+#addButton{
+  background: green;
+}
+#noData{
+  background: #f1f1f1;
+  height: 40px;
+  border: 1px solid #e8e8e8;
+  width: 120px;
+  text-align: center;
+  vertical-align: middle;
+  float: right;
+}
+#withData{
+  background: #0077ff;
+  height: 40px;
+  border: 1px solid #e8e8e8;
+  width: 120px;
+  text-align: center;
+  vertical-align: middle;
+  float: right;
+
 }

@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createReactClass from 'create-react-class';
 import TitleBar from './TitleBar';
 import Participants from './Participants';
 import './index.css';
-const ParticipantsBoard = createReactClass({
+class ParticipantsBoard extends React.Component{
   render() {
     return (
       <div className="wrapper">
@@ -16,6 +15,6 @@ const ParticipantsBoard = createReactClass({
       </div>
     );
   }
-});
+};
 
 ReactDOM.render(<ParticipantsBoard />, document.getElementById('root'));

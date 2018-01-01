@@ -1,38 +1,42 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import faker from 'faker';
 import AddParticipant from './AddParticipant';
 import Participant from './Participant';
-const Participants = createReactClass({
-  getInitialState() {
+import uuid from 'uuid';
+export default class Participants extends React.Component {
+  constructor(props) {
+    super(props)
+
     var participants = [];
     var info = faker;
 
     for (var i = 0; i < 20; i++) {
-      var id = faker.random.uuid();
+      var id = uuid.v4();
       var name = info.name.firstName() + ' ' + faker.name.lastName();
       var email = info.internet.email();
       var phone = info.phone.phoneNumberFormat();
-      participants.push({ id, name, email, phone });
+      participants.push({id, name, email, phone });
     }
-    return {
+
+    this.state = {
       participants: participants
     };
-  },
+
+  }
   addNewParticipant(newParticipant) {
     var arr = this.state.participants;
     arr.push(newParticipant);
     this.setState({
       participants: arr
     });
-  },
+  }
   removeParticipant(i) {
     var arr = this.state.participants;
     arr.splice(i, 1);
     this.setState({
       participants: arr
     });
-  },
+  }
   updateParticipant(newText, i) {
     console.log('Updating participant:');
     var arr = this.state.participants;
@@ -40,17 +44,18 @@ const Participants = createReactClass({
     this.setState({
       participants: arr
     });
-  },
+  }
   cancelUpdate() {
     var arr = this.state.participants;
     this.setState({
       participants: arr
     });
-  },
+  }
   sortTableByName() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById('myTable');
     switching = true;
+
     while (switching) {
       switching = false;
       rows = table.getElementsByTagName('TR');
@@ -68,33 +73,41 @@ const Participants = createReactClass({
         switching = true;
       }
     }
-  },
+
+    if(switching===false) {
+      var arr = this.state.participants;
+      this.setState({
+        participants: arr
+      });
+
+
+    }
+
+
+  }
   eachParticipants(participant, i) {
     return (
       <Participant
         key={i}
         index={i}
         participant={participant}
-        onEdit={this.updateParticipant}
-        onDelete={this.removeParticipant}
-        onSave={this.updateParticipant}
-        onCancel={this.cancelUpdate}>
-
+        onEdit={this.updateParticipant.bind(this)}
+        onDelete={this.removeParticipant.bind(this)}
+        onSave={this.updateParticipant.bind(this)}
+        onCancel={this.cancelUpdate.bind(this)}>
       </Participant>
     );
-  },
-
+  }
   render() {
     return (
       <div>
-        <AddParticipant onAdd={this.addNewParticipant} />
+        <AddParticipant onAdd={this.addNewParticipant.bind(this)} />
         <table
           className="participants add-participant partipant-table"
-          id="myTable"
-        >
+          id="myTable">
           <thead>
             <tr>
-              <th onClick={this.sortTableByName} className="participant_info">
+              <th onClick={this.sortTableByName.bind(this)} className="participant_info">
                 <a href="#">
                   Name <i className="fa fa-arrow-down" aria-hidden="true" />
                 </a>
@@ -104,11 +117,9 @@ const Participants = createReactClass({
               <th className="participant_info" />
             </tr>
           </thead>
-          <tbody>{this.state.participants.map(this.eachParticipants)}</tbody>
+          <tbody>{this.state.participants.map(this.eachParticipants.bind(this))}</tbody>
         </table>
       </div>
     );
   }
-});
-
-export default Participants;
+};

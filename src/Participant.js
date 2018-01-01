@@ -1,20 +1,21 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
-const Participant = createReactClass({
-  getInitialState() {
-    return {
+import PropTypes from 'prop-types';
+export default class Participant extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       editing: false
     };
-  },
+  }
   handleDelete() {
     this.props.onDelete(this.props.index);
-  },
+  }
   handleEdit() {
     this.props.onEdit(this.props.index);
     this.setState({
       editing: true
     });
-  },
+  }
   handleChange(e) {
     console.log('Saved');
     e.preventDefault(e);
@@ -29,7 +30,7 @@ const Participant = createReactClass({
     this.setState({
       editing: true
     });
-  },
+  }
   handleSave() {
     let name = this.refs.name.value;
     let email = this.refs.email.value;
@@ -42,13 +43,13 @@ const Participant = createReactClass({
     this.setState({
       editing: false
     });
-  },
+  }
   handleCancel() {
     this.props.onCancel();
     this.setState({
       editing: false
     });
-  },
+  }
   renderNormal() {
     return (
       <tr>
@@ -58,25 +59,25 @@ const Participant = createReactClass({
         <td className="edit-delet-buttons">
           <span>
             <i
-              onClick={this.handleEdit}
+              onClick={this.handleEdit.bind(this)}
               className="icon ion-edit"
 
             />
             <i
-              onClick={this.handleDelete}
+              onClick={this.handleDelete.bind(this)}
               className="icon ion-trash-b"
             />
           </span>
         </td>
       </tr>
     );
-  },
+  }
   renderForm() {
     return (
       <tr>
         <td>
           <input
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             type="text"
             ref="name"
             placeholder="Full name"
@@ -85,7 +86,7 @@ const Participant = createReactClass({
         </td>
         <td>
           <input
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             type="email"
             ref="email"
             placeholder="E-mail address"
@@ -94,26 +95,26 @@ const Participant = createReactClass({
         </td>
         <td>
           <input
-            onChange={this.handleChange}
-            type="text"
+            onChange={this.handleChange.bind(this)}
+            type="tel"
             ref="phone"
             placeholder="Phone number"
             defaultValue={this.props.participant.phone}
           />
         </td>
-        <td className="save-cancel-buttons">
+        <td className="buttons">
           <div>
-            <button onClick={this.handleCancel} className="cancel">
+            <button onClick={this.handleCancel.bind(this)} className="cancel">
               Cancel
             </button>
-            <button onClick={this.handleSave} className="save">
+            <button onClick={this.handleSave.bind(this)} className="save">
               Save
             </button>
           </div>
         </td>
       </tr>
     );
-  },
+  }
   render() {
     if (this.state.editing) {
       return this.renderForm();
@@ -121,6 +122,10 @@ const Participant = createReactClass({
       return this.renderNormal();
     }
   }
-});
-
-export default Participant;
+}
+Participant.propTypes = {
+  onDelete:PropTypes.func,
+  onSave:PropTypes.func,
+  onEdit:PropTypes.func,
+  participant:PropTypes.object,
+}
